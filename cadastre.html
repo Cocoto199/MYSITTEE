@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilos CSS aqui */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(img/Bold\ Gradient\ Geometric\ Technology\ Business\ Logo\ \ \(1\).png);
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(169, 169, 169, 0.834);
+        }
+
+        .container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .container input[type="text"],
+        .container input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .container button {
+            background-color: #4caf50;
+            border: none;
+            color: #fff;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro</h2>
+        <form id="registerForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        <p>já tem uma conta? Faça <a href="login.html">login</a></p>
+    </div>
+
+    <script>
+        // Função para salvar os dados de cadastro no localStorage
+        function saveRegistrationData(name, email, password) {
+            var user = {
+                name: name,
+                email: email,
+                password: password
+            };
+
+            localStorage.setItem('user', JSON.stringify(user));
+        }
+
+        // Verificar se já existe um usuário cadastrado
+        if (localStorage.getItem('user')) {
+            // Redirecionar para a página de login ou fazer outra ação desejada
+            window.location.href = 'login.html';
+        }
+
+        // Evento de submit do formulário
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impedir o envio do formulário
+
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            saveRegistrationData(name, email, password);
+
+            // Redirecionar para a página de login ou fazer outra ação desejada
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

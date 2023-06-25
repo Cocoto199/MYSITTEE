@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilos CSS aqui */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(img/Bold\ Gradient\ Geometric\ Technology\ Business\ Logo\ \ \(1\).png);
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ccccccb7;
+        }
+
+        .container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .container input[type="text"],
+        .container input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .container button {
+            background-color: #4caf50;
+            border: none;
+            color: #fff;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="text" id="email" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+        <p>ainda não tem uma conta? Faça <a href="cadastre.html">cadastro</a></p>
+    </div>
+
+    <script>
+        // Função para verificar se os dados de login estão corretos
+        function verifyLogin(email, password) {
+            // Recuperar os dados de cadastro do localStorage
+            var user = JSON.parse(localStorage.getItem('user'));
+
+            // Verificar se o email e a senha estão corretos
+            if (user && user.email === email && user.password === password) {
+                return true; // Login válido
+            }
+
+            return false; // Login inválido
+        }
+
+        // Evento de submit do formulário
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impedir o envio do formulário
+
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            if (verifyLogin(email, password)) {
+                // Redirecionar para o site após o login
+                window.location.href = 'site.html';
+            } else {
+                alert('Usuário inválido. Por favor, tente novamente.');
+            }
+        });
+    </script>
+</body>
+</html>
